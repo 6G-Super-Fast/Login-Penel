@@ -271,8 +271,13 @@
     "icon": "https://www.jagranimages.com/images/2025/12/01/article/image/Ayushman-Card-(1)-1764588324585.jpg"
   },
   {
-    "name": "PAN NO TO GST NUMBER FIND",
+    "name": "PAN TO GST 🔍",
     "url": "https://www.knowyourgst.com/gst-number-search/by-name-pan/",
     "icon": "https://surepass.io/wp-content/uploads/2025/01/PAN-TO-GST-Card.webp"
+  },
+  {
+    "name": "GST TO PAN 🔍",
+    "url": "https://www.knowyourgst.com/gst-number-search/",
+    "icon": "https://taxconcept.net/wp-content/uploads/2023/09/Screen-Shot-2023-09-04-at-7.53.54-PM.png"
   }
 ]
