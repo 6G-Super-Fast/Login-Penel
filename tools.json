@@ -218,5 +218,10 @@
     "password": "Vijay@30101983",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "01/09/2026"
+  },
+  {
+    "name": "IMEI NO TO DETAILS",
+    "url": "https://imei.guru/",
+    "icon": "https://media.geeksforgeeks.org/wp-content/uploads/20240103155923/How-To-Check-IMEI-Number.png"
   }
 ]
