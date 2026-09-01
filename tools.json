@@ -243,5 +243,10 @@
     "name": "CHECK VEHICLE RC DETAILS",
     "url": "https://vahanx.in/",
     "icon": "https://assets.dmgvision.in/rto/media/web_og_images/Vehicle-Registration-Details.jpg"
+  },
+  {
+    "name": "UIDAI M-AADHAAR SITE",
+    "url": "https://myaadhaar.uidai.gov.in/check-aadhaar",
+    "icon": "https://tse3.mm.bing.net/th/id/OIP.c055yGhgV9M5VY1KtIoBnQHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   }
 ]
