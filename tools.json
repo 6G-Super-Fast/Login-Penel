@@ -15,7 +15,12 @@
     "icon": "https://everypincode.in/assets/everypincode.jpg"
   },
   {
-    "name": "IMAGE REMOVE BACKGROUND ⚡",
+    "name": "REMOVE BACKGROUND",
+    "url": "https://www.pixelcut.ai/ai-image-editor?tool=removeBackground",
+    "icon": "https://files.deepswap.net/ds/ai-tools/erase.jpg"
+  },
+  {
+    "name": "REMOVE BACKGROUND",
     "url": "https://www.remove.bg/uploads",
     "icon": "https://tse4.mm.bing.net/th/id/OIP._n3bgDWybs_NymwB-ZLwaAHaEK?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
   },
