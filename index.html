@@ -15,17 +15,17 @@
         body { display: flex; flex-direction: column; justify-content: center; align-items: center; min-height: 100vh; background: #1a1a2e; padding: 20px; font-family: 'Poppins', sans-serif; color: #fff; overflow-x: auto; touch-action: none; }
 
         /* ================= AUTH STYLES ================= */
-        #loginView { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: calc(100vh - 40px); }
+        #loginView { width: 100%; display: flex; flex-direction: column; align-items: center; }
         .footer { margin-top: 30px; text-align: center; padding: 15px; font-size: 14px; color: #fff; }
         .footer a { color: #00d4ff; text-decoration: none; font-weight: 600; transition: .3s; }
         .footer a:hover { text-decoration: underline; color: #00b8d4; }
         
-        .auth-wrapper { position: relative; width: 100%; max-width: 850px; height: 580px; border: 2px solid #00d4ff; box-shadow: 0 0 25px #00d4ff; overflow: hidden; background: #1a1a2e; }
-        .auth-wrapper .credentials-panel { position: absolute; top: 0; width: 50%; height: 100%; display: flex; justify-content: center; flex-direction: column; z-index: 2; }
+        .auth-wrapper { position: relative; width: 100%; max-width: 850px; height: 580px; border: 2px solid #00d4ff; box-shadow: 0 0 25px #00d4ff; overflow: hidden; }
+        .auth-wrapper .credentials-panel { position: absolute; top: 0; width: 50%; height: 100%; display: flex; justify-content: center; flex-direction: column; }
         
         .credentials-panel.signin { left: 0; padding: 0 40px; }
-        .credentials-panel.signin h2 { margin-bottom: 20px; font-size: 30px; text-align: center; z-index: 3; }
-        .credentials-panel.signin .slide-element { transform: translateX(0%); transition: .7s ease; opacity: 1; }
+        .credentials-panel.signin h2 { margin-bottom: 20px; font-size: 30px; text-align: center; }
+        .credentials-panel.signin .slide-element { transform: translateX(0%); transition: .7s; opacity: 1; }
         .credentials-panel.signin .slide-element:nth-child(1) { transition-delay: 2.1s; }
         .credentials-panel.signin .slide-element:nth-child(2) { transition-delay: 2.2s; }
         .credentials-panel.signin .slide-element:nth-child(3) { transition-delay: 2.3s; }
@@ -33,11 +33,16 @@
         .credentials-panel.signin .slide-element:nth-child(5) { transition-delay: 2.5s; }
         .credentials-panel.signin .slide-element:nth-child(6) { transition-delay: 2.6s; }
         
-        .auth-wrapper.toggled .credentials-panel.signin { pointer-events: none; }
         .auth-wrapper.toggled .credentials-panel.signin .slide-element { transform: translateX(-120%); opacity: 0; }
+        .auth-wrapper.toggled .credentials-panel.signin .slide-element:nth-child(1) { transition-delay: 0s; }
+        .auth-wrapper.toggled .credentials-panel.signin .slide-element:nth-child(2) { transition-delay: 0.1s; }
+        .auth-wrapper.toggled .credentials-panel.signin .slide-element:nth-child(3) { transition-delay: 0.2s; }
+        .auth-wrapper.toggled .credentials-panel.signin .slide-element:nth-child(4) { transition-delay: 0.3s; }
+        .auth-wrapper.toggled .credentials-panel.signin .slide-element:nth-child(5) { transition-delay: 0.4s; }
+        .auth-wrapper.toggled .credentials-panel.signin .slide-element:nth-child(6) { transition-delay: 0.5s; }
         
         .credentials-panel.signup { right: 0; padding: 0 40px; }
-        .credentials-panel.signup h2 { margin-bottom: 10px; font-size: 28px; text-align: center; z-index: 3; }
+        .credentials-panel.signup h2 { margin-bottom: 10px; font-size: 28px; text-align: center; }
         .credentials-panel.signup .field-wrapper { margin-top: 15px; height: 48px; }
         .credentials-panel.signup .submit-button { margin-top: 22px; height: 44px; }
         .credentials-panel.signup .switch-link { margin: 18px 0 0 0; }
@@ -51,7 +56,6 @@
         .credentials-panel.signup .slide-element:nth-child(6) { transition-delay: 0.5s; }
         .credentials-panel.signup .slide-element:nth-child(7) { transition-delay: 0.6s; }
         
-        .auth-wrapper.toggled .credentials-panel.signup { pointer-events: auto; }
         .auth-wrapper.toggled .credentials-panel.signup .slide-element { transform: translateX(0%); opacity: 1; filter: blur(0px); }
         .auth-wrapper.toggled .credentials-panel.signup .slide-element:nth-child(1) { transition-delay: 1.7s; }
         .auth-wrapper.toggled .credentials-panel.signup .slide-element:nth-child(2) { transition-delay: 1.8s; }
@@ -61,27 +65,36 @@
         .auth-wrapper.toggled .credentials-panel.signup .slide-element:nth-child(6) { transition-delay: 2.1s; }
         .auth-wrapper.toggled .credentials-panel.signup .slide-element:nth-child(7) { transition-delay: 2.2s; }
         
-        .field-wrapper { position: relative; width: 100%; height: 52px; margin-top: 20px; z-index: 3; }
+        .field-wrapper { position: relative; width: 100%; height: 52px; margin-top: 20px; }
         
-        .field-wrapper input { width: 100%; height: 100%; background: transparent; border: none; outline: none; font-size: 15px; color: #fff; font-weight: 600; border-bottom: 2px solid #fff; padding-right: 30px; transition: .3s; }
+        .field-wrapper input { 
+            width: 100%; height: 100%; background: transparent; border: none; outline: none; 
+            font-size: 15px; color: #fff; font-weight: 600; border-bottom: 2px solid #fff; 
+            padding-right: 30px; transition: .3s; 
+        }
+        
         .field-wrapper input::placeholder { color: rgba(255, 255, 255, 0.7); opacity: 0.8; font-weight: 400; }
         
-        input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px #1a1a2e inset !important; -webkit-text-fill-color: #fff !important; transition: background-color 5000s ease-in-out 0s; }
+        input:-webkit-autofill, input:-webkit-autofill:hover, input:-webkit-autofill:focus, input:-webkit-autofill:active { 
+            -webkit-box-shadow: 0 0 0 30px #1a1a2e inset !important; 
+            -webkit-text-fill-color: #fff !important; 
+            transition: background-color 5000s ease-in-out 0s; 
+        }
 
         .field-wrapper input:focus { border-bottom: 2px solid #00d4ff; }
         .field-wrapper i { position: absolute; top: 50%; right: 0; font-size: 18px; transform: translateY(-50%); color: #fff; }
         .field-wrapper input:focus ~ i { color: #00d4ff; }
         
-        .submit-button { position: relative; width: 100%; height: 46px; background: transparent; border-radius: 40px; cursor: pointer; font-size: 16px; font-weight: 600; border: 2px solid #00d4ff; overflow: hidden; z-index: 3; margin-top: 25px; color: #fff; font-family: 'Poppins', sans-serif; }
+        .submit-button { position: relative; width: 100%; height: 46px; background: transparent; border-radius: 40px; cursor: pointer; font-size: 16px; font-weight: 600; border: 2px solid #00d4ff; overflow: hidden; z-index: 1; margin-top: 25px; color: #fff; font-family: 'Poppins', sans-serif; }
         .submit-button::before { content: ""; position: absolute; height: 300%; width: 100%; background: linear-gradient(#1a1a2e, #00d4ff, #1a1a2e, #00d4ff); top: -100%; left: 0; z-index: -1; transition: .5s; }
         .submit-button:hover:before { top: 0; }
         
-        .switch-link { font-size: 13px; text-align: center; margin-top: 20px; z-index: 3; position: relative; }
+        .switch-link { font-size: 13px; text-align: center; margin-top: 20px; }
         .switch-link.forgot { margin-top: 10px; text-align: right; font-size: 12px; }
         .switch-link a { text-decoration: none; color: #00d4ff; font-weight: 600; cursor: pointer; }
         .switch-link a:hover { text-decoration: underline; }
         
-        .welcome-section { position: absolute; top: 0; height: 100%; width: 50%; display: flex; justify-content: center; flex-direction: column; z-index: 1; }
+        .welcome-section { position: absolute; top: 0; height: 100%; width: 50%; display: flex; justify-content: center; flex-direction: column; }
         .welcome-section.signin { right: 0; text-align: right; padding: 0 40px 60px 150px; }
         .welcome-section.signin .slide-element { transform: translateX(0); transition: .7s ease; opacity: 1; filter: blur(0px); }
         .welcome-section.signin .slide-element:nth-child(1) { transition-delay: 2.0s; }
@@ -89,20 +102,27 @@
         .auth-wrapper.toggled .welcome-section.signin .slide-element:nth-child(1) { transition-delay: 0s; }
         
         .welcome-section.signup { left: 0; text-align: left; padding: 0 150px 60px 38px; pointer-events: none; }
-        .welcome-section.signup .slide-element { transform: translateX(-120%); transition: .7s ease; opacity: 0; filter: blur(10px); }
+        .welcome-section.signup .slide-element { transform: translateX(-120%); transition: .7s ease; opacity: 0; filter: blur(10PX); }
         .welcome-section.signup .slide-element:nth-child(1) { transition-delay: 0s; }
         .auth-wrapper.toggled .welcome-section.signup .slide-element { transform: translateX(0%); opacity: 1; filter: blur(0); }
         .auth-wrapper.toggled .welcome-section.signup .slide-element:nth-child(1) { transition-delay: 1.7s; }
-        .welcome-section h2 { text-transform: uppercase; font-size: 36px; line-height: 1.3; color: #fff; white-space: nowrap; }
+        .welcome-section h2 { text-transform: uppercase; font-size: 36px; line-height: 1.3; }
         
-        .auth-wrapper .background-shape { position: absolute; right: 0; top: -5px; height: 650px; width: 900px; background: linear-gradient(45deg, #1a1a2e, #00d4ff); transform: rotate(10deg) skewY(40deg); transform-origin: bottom right; transition: 1.5s ease; transition-delay: 1.6s; z-index: 1; }
+        .auth-wrapper .background-shape { position: absolute; right: 0; top: -5px; height: 650px; width: 900px; background: linear-gradient(45deg, #1a1a2e, #00d4ff); transform: rotate(10deg) skewY(40deg); transform-origin: bottom right; transition: 1.5s ease; transition-delay: 1.6s; }
         .auth-wrapper.toggled .background-shape { transform: rotate(0deg) skewY(0deg); transition-delay: .5s; }
-        .auth-wrapper .secondary-shape { position: absolute; left: 250px; top: 100%; height: 750px; width: 900px; background: #1a1a2e; border-top: 3px solid #00d4ff; transform: rotate(0deg) skewY(0deg); transform-origin: bottom left; transition: 1.5s ease; transition-delay: .5s; z-index: 1; }
+        .auth-wrapper .secondary-shape { position: absolute; left: 250px; top: 100%; height: 750px; width: 900px; background: #1a1a2e; border-top: 3px solid #00d4ff; transform: rotate(0deg) skewY(0deg); transform-origin: bottom left; transition: 1.5s ease; transition-delay: .5s; }
         .auth-wrapper.toggled .secondary-shape { transform: rotate(-11deg) skewY(-41deg); transition-delay: 1.2s; }
 
-        /* ================= DASHBOARD GRID & PROFILE STYLES ================= */
-        #dashboardView { display: none; width: 1400px; min-width: 1400px; margin: 0 auto; font-family: 'Inter', sans-serif; opacity: 0; transition: opacity 0.3s ease; }
-        #dashboardView.loaded { opacity: 1; }
+        /* ================= DASHBOARD GRID & PROFILE STYLES (LOCKED 6 COLUMNS) ================= */
+        #dashboardView { 
+            display: none; 
+            width: 1400px; 
+            min-width: 1400px;
+            margin: 0 auto; 
+            font-family: 'Inter', sans-serif; 
+            animation: fadeIn 0.8s ease forwards; 
+        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
         .dashboard-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; padding: 0 10px; }
         .dashboard-header h1 { color: #00ff88; font-size: 26px; font-weight: 800; letter-spacing: 0.5px; text-shadow: 0 0 10px rgba(0, 255, 136, 0.3); margin: 0; text-transform: uppercase; }
@@ -130,9 +150,9 @@
         .card-img-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
         .card-img-placeholder i { font-size: 45px; color: #2c3e50; }
 
-        .free-badge { position: absolute; top: 10px; left: 10px; background: #ff4757; color: white; font-size: 10px; font-weight: 800; padding: 3px 8px; border-radius: 4px; letter-spacing: 1px; z-index: 5; }
         .card-title { color: #1a1a2e; font-size: 14px; font-weight: 800; text-align: center; padding: 15px 10px; margin: 0; flex-grow: 1; display: flex; align-items: center; justify-content: center; text-transform: uppercase; }
         .card-action { padding: 0 15px 20px; display: flex; justify-content: center; }
+
         .visit-btn-grid { background: #1a1a2e; color: #ffffff; border: none; padding: 10px 0; width: 100%; border-radius: 4px; font-size: 14px; font-weight: 700; cursor: pointer; transition: background 0.3s, transform 0.2s; font-family: 'Inter', sans-serif; letter-spacing: 0.5px; }
         .visit-btn-grid:hover { background: #00d4ff; color: #000; }
 
@@ -154,6 +174,7 @@
         .modal-content h2 { font-size: 24px; margin-bottom: 10px; color: #fff; font-weight: 700; }
         #showPasswordResult { margin-top: 20px; font-size: 16px; font-weight: 600; color: #00d4ff; min-height: 25px; }
 
+        /* Profile Modal Adjustments */
         #profileModal { backdrop-filter: blur(10px); }
         #profileModal .modal-content { max-width: 500px; padding: 40px; border-radius: 12px; }
         #profileModal .field-wrapper input { border-bottom: 1px solid #8b949e; }
@@ -332,7 +353,7 @@
     <div id="successModal" class="modal">
         <div class="modal-content">
             <h2 id="successTitle" style="color: #00ea77;">REGISTER DONE ✅</h2>
-            <p id="successDesc" style="font-size: 14px; color: #c9d1d9; margin-top: 15px;">Your account has been created successfully.</p>
+            <p id="successDesc" style="font-size: 14px; color: #c9d1d9;">Your account has been created successfully.</p>
             <button class="submit-button" id="closeSuccessModal" style="width: 100%; margin-top: 25px;">OK</button>
         </div>
     </div>
@@ -340,7 +361,7 @@
     <div id="loginSuccessModal" class="modal">
         <div class="modal-content">
             <h2 style="color: #00ea77;">LOGIN SUCCESSFULLY ✅</h2>
-            <p style="font-size: 14px; color: #c9d1d9; margin-top: 15px;">Aapka login safal raha!</p>
+            <p style="font-size: 14px; color: #c9d1d9;">Aapka login safal raha!</p>
             <button class="submit-button" id="closeLoginSuccessModal" style="width: 100%; margin-top: 25px;">Go to Dashboard</button>
         </div>
     </div>
@@ -348,7 +369,7 @@
     <div id="errorModal" class="modal">
         <div class="modal-content" style="border-color: #ff4757; box-shadow: 0 0 25px rgba(255, 71, 87, 0.4);">
             <h2 id="errorTitle" style="color: #ff4757;">ERROR ❌</h2>
-            <p id="errorMessage" style="font-size: 14px; color: #c9d1d9; margin-top: 15px;">Something went wrong.</p>
+            <p id="errorMessage" style="font-size: 14px; color: #c9d1d9;">Something went wrong.</p>
             <button class="submit-button" id="closeErrorModal" style="width: 100%; margin-top: 25px; border-color: #ff4757;">Try Again</button>
         </div>
     </div>
@@ -357,7 +378,7 @@
         <div class="modal-content">
             <span class="close-btn" id="closeForgotModal">&times;</span>
             <h2>Forgot Password</h2>
-            <p style="font-size: 14px; margin: 15px 0; color: #c9d1d9;">Enter your registered mobile number.</p>
+            <p style="font-size: 14px; margin-bottom: 15px; color: #c9d1d9;">Enter your registered mobile number.</p>
             <div class="field-wrapper" style="margin-top: 0;">
                 <input type="tel" id="forgotMobileInput" pattern="[0-9]{10}" placeholder="Mobile No" required style="padding-right: 0;">
                 <i class="fa-solid fa-mobile-screen"></i>
@@ -369,34 +390,46 @@
 
     <script>
         // ==========================================
-        // 🔒 BLOCK ZOOM & ANTI-INSPECT SECURITY
+        // 🔒 BLOCK ZOOM & ANTI-INSPECT
         // ==========================================
-        document.addEventListener('wheel', function(event) { if (event.ctrlKey) { event.preventDefault(); } }, { passive: false });
-        document.addEventListener('keydown', function(event) { if (event.ctrlKey && (event.key === '+' || event.key === '-' || event.key === '=' || event.key === '0')) { event.preventDefault(); } });
-        document.addEventListener('contextmenu', event => event.preventDefault());
-        document.addEventListener('keydown', (event) => {
-            if (event.keyCode === 123 || (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74 || event.keyCode === 67)) || (event.ctrlKey && event.keyCode === 85)) {
-                event.preventDefault(); forceLogoutSecurity();
+        document.addEventListener('wheel', function(event) {
+            if (event.ctrlKey) { event.preventDefault(); }
+        }, { passive: false });
+
+        document.addEventListener('keydown', function(event) {
+            if (event.ctrlKey && (event.key === '+' || event.key === '-' || event.key === '=' || event.key === '0')) {
+                event.preventDefault();
             }
         });
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.addEventListener('keydown', (event) => {
+            if (
+                event.keyCode === 123 || 
+                (event.ctrlKey && event.shiftKey && (event.keyCode === 73 || event.keyCode === 74 || event.keyCode === 67)) || 
+                (event.ctrlKey && event.keyCode === 85) 
+            ) {
+                event.preventDefault();
+                forceLogoutSecurity();
+            }
+        });
+
         function forceLogoutSecurity() {
-            if(localStorage.getItem('isLoggedIn') === 'true') { logout(); showError("SECURITY ALERT 🚨", "Developer tools / Inspect mode is strictly prohibited!"); }
+            if(localStorage.getItem('isLoggedIn') === 'true') {
+                logout();
+                showError("SECURITY ALERT 🚨", "Developer tools / Inspect mode is strictly prohibited!");
+            }
         }
 
         // ==========================================
-        // CONFIGURATION (2-PART TOKEN SPLIT)
+        // GITHUB & IMGBB API CONFIGURATION
         // ==========================================
-        
-        // 👇👇 YAHAN APNA NAYA TOKEN DALO 👇👇
         const TOKEN_PART_1 = "ghp_ib4h4kWYgpi9tp7N"; 
         const TOKEN_PART_2 = "WAmVKpx0IU4Gtk18s8tG"; 
-        // 👆👆 DHYAN RAHE: "ghp_" wala hissa part 1 me or bacha hua part 2 me dalein. 👆👆
-        
         const GIT_TOKEN = TOKEN_PART_1 + TOKEN_PART_2; 
-        
         const REPO_PATH = "6G-SUPER-FAST/Login-Penel";
-        const TOOLS_FILE = "tools.json";
-        const USERS_FILE = "users.json";
+        const DATA_FILE = "tools.json";
         const IMGBB_API_KEY = "d90349d5e7fac59ffa9b3f7a157221c5";
 
         // ==========================================
@@ -411,143 +444,363 @@
         const errorModal = document.getElementById('errorModal');
         const forgotModal = document.getElementById('forgotModal');
 
-        document.getElementById('closeSuccessModal').addEventListener('click', () => { successModal.style.display = 'none'; if(localStorage.getItem('isLoggedIn') !== 'true') { authWrapper.classList.remove('toggled'); } });
-        document.getElementById('closeLoginSuccessModal').addEventListener('click', () => { loginSuccessModal.style.display = 'none'; document.getElementById('loginView').style.display = 'none'; const dash = document.getElementById('dashboardView'); dash.style.display = 'block'; setupProfileData(); loadDashboardData(); startInactivityTimer(); });
+        document.getElementById('closeSuccessModal').addEventListener('click', () => { 
+            successModal.style.display = 'none'; 
+            if(localStorage.getItem('isLoggedIn') !== 'true') { authWrapper.classList.remove('toggled'); }
+        });
+        
+        document.getElementById('closeLoginSuccessModal').addEventListener('click', () => { 
+            loginSuccessModal.style.display = 'none'; 
+            document.getElementById('loginView').style.display = 'none';
+            document.getElementById('dashboardView').style.display = 'block';
+            setupProfileData();
+            loadDashboardData(); 
+            startInactivityTimer();
+        });
+
         document.getElementById('closeErrorModal').addEventListener('click', () => { errorModal.style.display = 'none'; });
         document.getElementById('openForgotModal').addEventListener('click', () => { forgotModal.style.display = 'flex'; document.getElementById('forgotMobileInput').value = ''; document.getElementById('showPasswordResult').innerText = ''; });
         document.getElementById('closeForgotModal').addEventListener('click', () => { forgotModal.style.display = 'none'; });
 
-        function showError(title, message) { document.getElementById('errorTitle').innerText = title; document.getElementById('errorMessage').innerText = message; errorModal.style.display = 'flex'; }
-        function showSuccess(title, message) { document.getElementById('successTitle').innerText = title; document.getElementById('successDesc').innerText = message; successModal.style.display = 'flex'; }
+        function showError(title, message) {
+            document.getElementById('errorTitle').innerText = title;
+            document.getElementById('errorMessage').innerText = message;
+            errorModal.style.display = 'flex';
+        }
+        
+        function showSuccess(title, message) {
+            document.getElementById('successTitle').innerText = title;
+            document.getElementById('successDesc').innerText = message;
+            successModal.style.display = 'flex';
+        }
 
-        function updateWelcomeText() { const welcomeTextElement = document.getElementById('loginWelcomeText'); welcomeTextElement.innerText = (localStorage.getItem('isRegisteredUser') === 'true') ? "WELCOME BACK!" : "WELCOME!"; }
+        function updateWelcomeText() {
+            const welcomeTextElement = document.getElementById('loginWelcomeText');
+            if (localStorage.getItem('isRegisteredUser') === 'true') {
+                welcomeTextElement.innerText = "WELCOME BACK!";
+            } else {
+                welcomeTextElement.innerText = "WELCOME!";
+            }
+        }
 
         // ==========================================
-        // PROFILE MENU
+        // PROFILE MENU & PERMANENT STORAGE LOGIC
         // ==========================================
-        function toggleProfileDropdown(e) { e.stopPropagation(); document.getElementById('profileContainer').classList.toggle('active'); }
-        document.addEventListener('click', () => { document.getElementById('profileContainer').classList.remove('active'); });
+        function toggleProfileDropdown(e) {
+            e.stopPropagation();
+            document.getElementById('profileContainer').classList.toggle('active');
+        }
+
+        document.addEventListener('click', () => {
+            document.getElementById('profileContainer').classList.remove('active');
+        });
 
         function setupProfileData() {
             const name = localStorage.getItem('currentUserName') || "User";
+            const dpUrl = localStorage.getItem('currentUserDp') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+            
             document.getElementById('headerProfileName').innerText = name.split(" ")[0]; 
-            document.getElementById('headerProfileImg').src = localStorage.getItem('currentUserDp') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+            document.getElementById('headerProfileImg').src = dpUrl;
         }
 
         function openProfileModal(e) {
             e.preventDefault();
             document.getElementById('profileModal').style.display = 'flex';
-            document.getElementById('modalProfileName').innerText = localStorage.getItem('currentUserName') || "User";
-            document.getElementById('modalProfileEmail').innerText = localStorage.getItem('currentUserEmail') || "N/A";
-            document.getElementById('modalProfileImg').src = localStorage.getItem('currentUserDp') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
-            document.getElementById('updateNameInput').value = localStorage.getItem('currentUserName') || "User";
+            const email = localStorage.getItem('currentUserEmail') || "N/A";
+            const name = localStorage.getItem('currentUserName') || "User";
+            const dpUrl = localStorage.getItem('currentUserDp') || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png";
+
+            document.getElementById('modalProfileName').innerText = name;
+            document.getElementById('modalProfileEmail').innerText = email;
+            document.getElementById('modalProfileImg').src = dpUrl;
+            document.getElementById('updateNameInput').value = name;
         }
 
-        function closeProfileModal() { document.getElementById('profileModal').style.display = 'none'; document.getElementById('oldPasswordInput').value = ''; document.getElementById('newPasswordInput').value = ''; }
-
-        // ==========================================
-        // ROBUST GITHUB API FETCH
-        // ==========================================
-        async function fetchGitHubData(filename) {
-            try {
-                const res = await fetch(`https://api.github.com/repos/${REPO_PATH}/contents/${filename}?t=${new Date().getTime()}`, { 
-                    headers: { 'Authorization': `token ${GIT_TOKEN}`, 'Cache-Control': 'no-cache' } 
-                });
-                
-                if (res.status === 404) return { data: [], sha: null }; 
-                if (!res.ok) throw new Error("API Error " + res.status);
-                
-                const data = await res.json();
-                
-                let decodedContent = "";
-                try { decodedContent = decodeURIComponent(escape(atob(data.content))); } catch(e) { decodedContent = atob(data.content); }
-                
-                let parsedData = [];
-                if (decodedContent.trim() !== "") { try { parsedData = JSON.parse(decodedContent); } catch(e) { parsedData = []; } }
-                
-                return { data: parsedData, sha: data.sha };
-            } catch (err) { return { error: true, details: err.message }; }
+        function closeProfileModal() {
+            document.getElementById('profileModal').style.display = 'none';
+            document.getElementById('oldPasswordInput').value = '';
+            document.getElementById('newPasswordInput').value = '';
         }
 
-        async function saveGitHubData(allData, filename) {
-            try {
-                let currentSha = null;
+        async function updateProfileName() {
+            const newName = document.getElementById('updateNameInput').value.trim();
+            const mobile = localStorage.getItem('currentUserMobile');
+
+            if(!newName) {
+                showError("ERROR ❌", "Name khali nahi ho sakta!");
+                return;
+            }
+
+            const btn = document.getElementById('updateNameBtn');
+            btn.innerText = "Updating...";
+
+            const fileInfo = await fetchGitHubData();
+            if (fileInfo.error) {
+                showError("API ERROR ❌", "Server se connect nahi ho paya.");
+                btn.innerText = "Update Name";
+                return;
+            }
+
+            let dataArray = fileInfo.data || [];
+            const userIndex = dataArray.findIndex(item => String(item.mobile).trim() === String(mobile).trim());
+
+            if (userIndex !== -1) {
+                dataArray[userIndex].userName = newName;
+                const success = await saveGitHubData(dataArray, fileInfo.sha);
+
+                if (success) {
+                    localStorage.setItem('currentUserName', newName);
+                    setupProfileData();
+                    document.getElementById('modalProfileName').innerText = newName;
+                    showSuccess("SUCCESS ✅", "Aapka naam successfully update ho gaya!");
+                } else {
+                    showError("SAVE ERROR ❌", "GitHub par save nahi hua.");
+                }
+            }
+            btn.innerText = "Update Name";
+        }
+
+        async function uploadProfilePic(input) {
+            if (input.files && input.files[0]) {
+                const file = input.files[0];
+                const formData = new FormData();
+                formData.append('image', file);
+
+                showError("UPLOADING ⏳", "Profile photo upload ho rahi hai, kripya wait karein...");
+
                 try {
-                    const shaRes = await fetch(`https://api.github.com/repos/${REPO_PATH}/contents/${filename}?t=${new Date().getTime()}`, { headers: { 'Authorization': `token ${GIT_TOKEN}`, 'Cache-Control': 'no-cache' } });
-                    if (shaRes.ok) { const shaData = await shaRes.json(); currentSha = shaData.sha; }
-                } catch(e) {}
+                    const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+                        method: 'POST',
+                        body: formData
+                    });
+                    const result = await response.json();
 
-                const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(allData, null, 2))));
-                const body = { message: `System Auto Update: ${filename}`, content: encodedContent };
-                if (currentSha) body.sha = currentSha; 
+                    if (result.success) {
+                        const newImageUrl = result.data.url;
+                        
+                        document.getElementById('modalProfileImg').src = newImageUrl;
+                        document.getElementById('headerProfileImg').src = newImageUrl;
+                        localStorage.setItem('currentUserDp', newImageUrl);
 
-                const res = await fetch(`https://api.github.com/repos/${REPO_PATH}/contents/${filename}`, {
-                    method: 'PUT', headers: { 'Authorization': `token ${GIT_TOKEN}`, 'Content-Type': 'application/json' }, body: JSON.stringify(body)
-                });
-                return res.ok;
-            } catch (e) { return false; }
+                        const mobile = localStorage.getItem('currentUserMobile');
+                        const fileInfo = await fetchGitHubData();
+                        if (!fileInfo.error) {
+                            let dataArray = fileInfo.data || [];
+                            const userIndex = dataArray.findIndex(item => String(item.mobile).trim() === String(mobile).trim());
+                            if (userIndex !== -1) {
+                                dataArray[userIndex].dpUrl = newImageUrl;
+                                await saveGitHubData(dataArray, fileInfo.sha);
+                            }
+                        }
+                        errorModal.style.display = 'none';
+                        showSuccess("SUCCESS ✅", "Profile photo permanently update ho gayi!");
+                    } else {
+                        showError("UPLOAD FAILED ❌", "Image upload nahi ho payi. Dobara try karein.");
+                    }
+                } catch (err) {
+                    showError("NETWORK ERROR ❌", "Image upload mein network error aaya.");
+                }
+            }
+        }
+
+        async function updatePassword() {
+            const oldPass = document.getElementById('oldPasswordInput').value.trim();
+            const newPass = document.getElementById('newPasswordInput').value.trim();
+            const mobile = localStorage.getItem('currentUserMobile');
+            
+            if(!oldPass || !newPass) {
+                showError("MISSING FIELDS ❌", "Please enter both old and new passwords.");
+                return;
+            }
+            
+            const btn = document.getElementById('updatePassBtn');
+            btn.innerText = "Updating...";
+            
+            const fileInfo = await fetchGitHubData();
+            if (fileInfo.error) {
+                showError("API ERROR ❌", "Unable to connect to server.");
+                btn.innerText = "Update Password";
+                return;
+            }
+            
+            let dataArray = fileInfo.data || [];
+            const userIndex = dataArray.findIndex(item => String(item.mobile).trim() === String(mobile).trim());
+            
+            if (userIndex !== -1) {
+                if (String(dataArray[userIndex].password).trim() !== oldPass) {
+                    showError("WRONG PASSWORD ❌", "Aapka purana password galat hai.");
+                    btn.innerText = "Update Password";
+                    return;
+                }
+                
+                dataArray[userIndex].password = newPass;
+                const success = await saveGitHubData(dataArray, fileInfo.sha);
+                
+                if(success) {
+                    closeProfileModal();
+                    showSuccess("PASSWORD UPDATED ✅", "Aapka naya password successfully update aur generate ho gaya hai! Purana password ab expire ho chuka hai.");
+                } else {
+                    showError("SAVE ERROR ❌", "Server timeout, please try again.");
+                }
+            } else {
+                 showError("USER NOT FOUND ❌", "Session expired. Please re-login.");
+                 logout();
+            }
+            btn.innerText = "Update Password";
         }
 
         // ==========================================
-        // REGISTRATION & LOGIN
+        // 20-MINUTE INACTIVITY & PERSISTENT SESSION MANAGEMENT
         // ==========================================
-        function isFakeOrRepeatingNumber(mobile) {
-            if (!/^[6-9]\d{9}$/.test(mobile)) return true;
-            if (/^(\d)\1{9}$/.test(mobile)) return true;
-            if ("0123456789".includes(mobile) || "9876543210".includes(mobile)) return true;
-            return false;
+        let inactivityTimeout;
+        const INACTIVITY_LIMIT = 20 * 60 * 1000; 
+
+        function startInactivityTimer() {
+            clearTimeout(inactivityTimeout);
+            inactivityTimeout = setTimeout(logoutDueToInactivity, INACTIVITY_LIMIT);
         }
 
+        function resetInactivityTimer() {
+            if (localStorage.getItem('isLoggedIn') === 'true') { 
+                startInactivityTimer(); 
+            }
+        }
+
+        ['mousemove', 'mousedown', 'keypress', 'touchmove', 'scroll'].forEach(evt => 
+            document.addEventListener(evt, resetInactivityTimer)
+        );
+
+        function logoutDueToInactivity() {
+            showError("SESSION EXPIRED ⏳", "Aap 20 minute se inactive the. Security ke liye auto-logout kar diya gaya hai.");
+            logout();
+        }
+
+        function logout() {
+            localStorage.removeItem('isLoggedIn'); 
+            localStorage.removeItem('currentUserMobile');
+            localStorage.removeItem('currentUserEmail');
+            localStorage.removeItem('currentUserName');
+            localStorage.removeItem('currentUserDp');
+            clearTimeout(inactivityTimeout); 
+            document.getElementById('dashboardView').style.display = 'none';
+            document.getElementById('loginView').style.display = 'flex';
+            document.getElementById('loginForm').reset();
+            closeToolFrame(); 
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            updateWelcomeText();
+            if (localStorage.getItem('isLoggedIn') === 'true') {
+                document.getElementById('loginView').style.display = 'none';
+                document.getElementById('dashboardView').style.display = 'block';
+                setupProfileData();
+                loadDashboardData();
+                startInactivityTimer();
+            }
+        });
+
+        // ==========================================
+        // GITHUB DATABASE FUNCTIONS
+        // ==========================================
+        async function fetchGitHubData() {
+            try {
+                const res = await fetch(`https://api.github.com/repos/${REPO_PATH}/contents/${DATA_FILE}`, { headers: { 'Authorization': `token ${GIT_TOKEN}` } });
+                if (res.status === 404) return { data: [], sha: null }; 
+                if (!res.ok) throw new Error("Token Error");
+                const data = await res.json();
+                const decodedContent = decodeURIComponent(escape(atob(data.content)));
+                return { data: JSON.parse(decodedContent), sha: data.sha };
+            } catch (err) { return { error: true }; }
+        }
+
+        async function saveGitHubData(allData, sha) {
+            const encodedContent = btoa(unescape(encodeURIComponent(JSON.stringify(allData, null, 2))));
+            const body = { message: "Updated Data", content: encodedContent };
+            if (sha) body.sha = sha;
+            const res = await fetch(`https://api.github.com/repos/${REPO_PATH}/contents/${DATA_FILE}`, {
+                method: 'PUT', headers: { 'Authorization': `token ${GIT_TOKEN}`, 'Content-Type': 'application/json' },
+                body: JSON.stringify(body)
+            });
+            return res.ok;
+        }
+
+        // ==========================================
+        // REGISTRATION & LOGIN (ROBUST TRIM FIX)
+        // ==========================================
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('regBtnTxt');
+            btn.innerText = "Processing...";
+
             const name = document.getElementById('regName').value.trim();
             const mobile = document.getElementById('regMobile').value.trim();
             const email = document.getElementById('regEmail').value.trim();
             const password = document.getElementById('regPass').value.trim();
             const dateStr = new Date().toLocaleDateString('en-GB');
 
-            if (isFakeOrRepeatingNumber(mobile)) { showError("FAKE NUMBER ❌", "Sudhar ja bhai fake number se mat bana ID !!"); return; }
-            btn.innerText = "Processing...";
-
-            const fileInfo = await fetchGitHubData(USERS_FILE);
-            if (fileInfo.error) { btn.innerText = "Register"; return showError("API ERROR ❌", "GitHub se connect nahi ho paya. Token check karein."); }
+            const fileInfo = await fetchGitHubData();
+            if (fileInfo.error) {
+                showError("API ERROR ❌", "GitHub API Error! Apna Token Check Karo.");
+                btn.innerText = "Register";
+                return;
+            }
 
             let dataArray = fileInfo.data || [];
-            const existingUser = dataArray.find(item => item.mobile && (String(item.mobile).trim() === mobile || (item.email && String(item.email).trim().toLowerCase() === email.toLowerCase())));
-            
-            if (existingUser) { btn.innerText = "Register"; return showError("ALREADY REGISTERED ❌", "Ye Mobile No. ya Email ID already registered hai! Real number use karein."); }
+            if (dataArray.find(item => String(item.mobile).trim() === mobile)) {
+                showError("ALREADY REGISTERED ❌", "Ye Mobile No. already registered hai! Kripya login karein.");
+                btn.innerText = "Register";
+                return;
+            }
 
             dataArray.push({ userName: name, mobile, email, password, dpUrl: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png", date: dateStr });
-            
-            const success = await saveGitHubData(dataArray, USERS_FILE);
+            const success = await saveGitHubData(dataArray, fileInfo.sha);
 
-            if (success) { localStorage.setItem('isRegisteredUser', 'true'); this.reset(); updateWelcomeText(); showSuccess("REGISTER DONE ✅", "Your account has been created successfully. Now you can Login!"); } 
-            else { showError("SAVE ERROR ❌", "Error: Data save nahi hua! Token ya Network check karein."); }
+            if (success) {
+                localStorage.setItem('isRegisteredUser', 'true');
+                this.reset();
+                updateWelcomeText(); 
+                showSuccess("REGISTER DONE ✅", "Your account has been created successfully.");
+            } else {
+                showError("SAVE ERROR ❌", "Error: Data GitHub par save nahi hua!");
+            }
             btn.innerText = "Register";
         });
 
         document.getElementById('loginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const btn = document.getElementById('loginBtnTxt'); btn.innerText = "Checking...";
+            const btn = document.getElementById('loginBtnTxt');
+            btn.innerText = "Checking...";
+
             const mobile = document.getElementById('loginMobile').value.trim();
             const password = document.getElementById('loginPass').value.trim();
 
-            const fileInfo = await fetchGitHubData(USERS_FILE);
-            if (fileInfo.error) { btn.innerText = "Login"; return showError("API ERROR ❌", "GitHub API Error! Token check karein."); }
+            const fileInfo = await fetchGitHubData();
+            if (fileInfo.error) {
+                showError("API ERROR ❌", "GitHub API Error! Apna Token Check Karo.");
+                btn.innerText = "Login";
+                return;
+            }
 
             const dataArray = fileInfo.data || [];
             const isValidUser = dataArray.find(item => item.mobile && String(item.mobile).trim() === mobile && String(item.password).trim() === password);
 
             if (isValidUser) {
-                localStorage.setItem('isRegisteredUser', 'true'); localStorage.setItem('isLoggedIn', 'true'); 
-                localStorage.setItem('currentUserMobile', isValidUser.mobile); localStorage.setItem('currentUserEmail', isValidUser.email || "");
-                localStorage.setItem('currentUserName', isValidUser.userName || "User"); localStorage.setItem('currentUserDp', isValidUser.dpUrl || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png");
-                this.reset(); document.getElementById('loginSuccessModal').style.display = 'flex'; 
+                localStorage.setItem('isRegisteredUser', 'true');
+                localStorage.setItem('isLoggedIn', 'true'); 
+                localStorage.setItem('currentUserMobile', isValidUser.mobile);
+                localStorage.setItem('currentUserEmail', isValidUser.email || "");
+                localStorage.setItem('currentUserName', isValidUser.userName || "User");
+                localStorage.setItem('currentUserDp', isValidUser.dpUrl || "https://cdn-icons-png.flaticon.com/512/3135/3135715.png");
+                
+                this.reset();
+                loginSuccessModal.style.display = 'flex'; 
             } else { 
                 const userExists = dataArray.find(item => item.mobile && String(item.mobile).trim() === mobile);
-                if(userExists) { showError("WRONG PASSWORD ❌", "Aapne galat password dala hai. Kripya dubara try karein."); } 
-                else { showError("USER NOT REGISTER ❌", "Ye number registered nahi hai. Pehle Sign Up karein!"); }
+                if(userExists) {
+                    showError("WRONG PASSWORD ❌", "Aapne galat password dala hai. Kripya dubara try karein.");
+                } else {
+                    showError("USER NOT REGISTER ❌", "Ye number registered nahi hai. Pehle Sign Up karein!");
+                }
             }
             btn.innerText = "Login";
         });
@@ -557,13 +810,20 @@
             const resultDiv = document.getElementById('showPasswordResult');
             if(mobile.length < 10) { resultDiv.style.color = "#ff4d4d"; resultDiv.innerText = "Enter valid mobile no."; return; }
             
-            this.innerText = "Wait..."; const fileInfo = await fetchGitHubData(USERS_FILE); this.innerText = "Get Password";
+            this.innerText = "Wait...";
+            const fileInfo = await fetchGitHubData();
+            this.innerText = "Get Password";
+
             if (fileInfo.error) { resultDiv.style.color = "#ff4d4d"; resultDiv.innerText = "API Error!"; return; }
 
-            const dataArray = fileInfo.data || []; const user = dataArray.find(item => item.mobile && String(item.mobile).trim() === mobile);
+            const dataArray = fileInfo.data || [];
+            const user = dataArray.find(item => item.mobile && String(item.mobile).trim() === mobile);
 
-            if (user) { resultDiv.style.color = "#00ea77"; resultDiv.innerText = "Password : " + user.password; } 
-            else { resultDiv.style.color = "#ff4757"; resultDiv.innerText = "USER NOT REGISTER ❌"; }
+            if (user) {
+                resultDiv.style.color = "#00ea77"; resultDiv.innerText = "Password : " + user.password;
+            } else {
+                resultDiv.style.color = "#ff4757"; resultDiv.innerText = "USER NOT REGISTER ❌";
+            }
         });
 
         // ==========================================
@@ -571,113 +831,78 @@
         // ==========================================
         async function loadDashboardData() {
             const gridBody = document.getElementById('toolsGrid');
-            const dashboardContainer = document.getElementById('dashboardView');
+            gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #8b949e; font-size: 18px;">Loading tools...</div>';
 
-            const fileInfo = await fetchGitHubData(TOOLS_FILE);
-            if (fileInfo.error) { gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #da3633; font-size: 18px;">Tools list load nahi ho payi. API Error!</div>'; dashboardContainer.classList.add('loaded'); return; }
+            const fileInfo = await fetchGitHubData();
+            if (fileInfo.error) {
+                gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #da3633; font-size: 18px;">Tools list load nahi ho payi. API Error!</div>';
+                return;
+            }
 
-            const allData = fileInfo.data || []; gridBody.innerHTML = ''; const actualTools = allData.filter(item => item.name && item.url);
+            const allData = fileInfo.data || [];
+            gridBody.innerHTML = ''; 
+            const actualTools = allData.filter(item => item.name && item.url);
 
-            if (actualTools.length === 0) { gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #8b949e; font-size: 18px;">Abhi koi tool add nahi hua hai. Admin panel se add karein!</div>'; dashboardContainer.classList.add('loaded'); return; }
+            if (actualTools.length === 0) { 
+                gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #8b949e; font-size: 18px;">Abhi koi tool add nahi hua hai. Admin panel se add karein!</div>'; 
+                return; 
+            }
             
             const defaultIcons = ['fa-id-card', 'fa-file-pdf', 'fa-image', 'fa-magnifying-glass', 'fa-language', 'fa-calculator', 'fa-qrcode', 'fa-font'];
 
             actualTools.forEach((tool, index) => {
                 let iconHTML = '';
                 if (tool.icon && tool.icon.trim() !== '') {
-                    if (tool.icon.startsWith('http') || tool.icon.startsWith('data:image')) { iconHTML = `<img src="${tool.icon}" alt="icon">`; } else { iconHTML = `<i class="fa-solid ${tool.icon}"></i>`; }
-                } else { iconHTML = `<i class="fa-solid ${defaultIcons[index % defaultIcons.length]}"></i>`; }
+                    if (tool.icon.startsWith('http') || tool.icon.startsWith('data:image')) {
+                        iconHTML = `<img src="${tool.icon}" alt="icon">`;
+                    } else {
+                        iconHTML = `<i class="fa-solid ${tool.icon}"></i>`;
+                    }
+                } else {
+                    const iconClass = defaultIcons[index % defaultIcons.length];
+                    iconHTML = `<i class="fa-solid ${iconClass}"></i>`;
+                }
 
-                const cleanName = tool.name.replace(' ⚡', '').replace(/'/g, "\\'"); const card = document.createElement('div'); card.className = 'tool-card';
-                card.innerHTML = `<div class="card-img-placeholder"><span class="free-badge">FREE</span>${iconHTML}</div><h3 class="card-title">${tool.name.replace(' ⚡', '')}</h3><div class="card-action"><button class="visit-btn-grid" onclick="visitSite('${tool.url}', '${cleanName}')">VISIT NOW</button></div>`;
+                const cleanName = tool.name.replace(' ⚡', '').replace(/'/g, "\\'"); 
+                const card = document.createElement('div');
+                card.className = 'tool-card';
+                card.innerHTML = `
+                    <div class="card-img-placeholder">
+                        ${iconHTML}
+                    </div>
+                    <h3 class="card-title">${tool.name.replace(' ⚡', '')}</h3>
+                    <div class="card-action">
+                        <button class="visit-btn-grid" onclick="visitSite('${tool.url}', '${cleanName}')">VISIT NOW</button>
+                    </div>
+                `;
                 gridBody.appendChild(card);
             });
-            dashboardContainer.classList.add('loaded');
-        }
-
-        async function updateProfileName() {
-            const newName = document.getElementById('updateNameInput').value.trim(); const mobile = localStorage.getItem('currentUserMobile');
-            if(!newName) return showError("ERROR ❌", "Name khali nahi ho sakta!");
-
-            const btn = document.getElementById('updateNameBtn'); btn.innerText = "Updating...";
-            const fileInfo = await fetchGitHubData(USERS_FILE);
-            if (fileInfo.error) { showError("API ERROR ❌", "Server se connect nahi ho paya."); btn.innerText = "Update Name"; return; }
-
-            let dataArray = fileInfo.data || []; const userIndex = dataArray.findIndex(item => String(item.mobile).trim() === String(mobile).trim());
-
-            if (userIndex !== -1) {
-                dataArray[userIndex].userName = newName; const success = await saveGitHubData(dataArray, USERS_FILE);
-                if (success) { localStorage.setItem('currentUserName', newName); setupProfileData(); document.getElementById('modalProfileName').innerText = newName; showSuccess("SUCCESS ✅", "Aapka naam successfully update ho gaya!"); } 
-                else { showError("SAVE ERROR ❌", "GitHub par save nahi hua."); }
-            }
-            btn.innerText = "Update Name";
-        }
-
-        async function uploadProfilePic(input) {
-            if (input.files && input.files[0]) {
-                const file = input.files[0]; const formData = new FormData(); formData.append('image', file);
-                showError("UPLOADING ⏳", "Profile photo upload ho rahi hai, kripya wait karein...");
-
-                try {
-                    const response = await fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, { method: 'POST', body: formData });
-                    const result = await response.json();
-
-                    if (result.success) {
-                        const newImageUrl = result.data.url; document.getElementById('modalProfileImg').src = newImageUrl; document.getElementById('headerProfileImg').src = newImageUrl; localStorage.setItem('currentUserDp', newImageUrl);
-                        const mobile = localStorage.getItem('currentUserMobile'); const fileInfo = await fetchGitHubData(USERS_FILE);
-                        if (!fileInfo.error) { let dataArray = fileInfo.data || []; const userIndex = dataArray.findIndex(item => String(item.mobile).trim() === String(mobile).trim()); if (userIndex !== -1) { dataArray[userIndex].dpUrl = newImageUrl; await saveGitHubData(dataArray, USERS_FILE); } }
-                        errorModal.style.display = 'none'; showSuccess("SUCCESS ✅", "Profile photo permanently update ho gayi!");
-                    } else { showError("UPLOAD FAILED ❌", "Image upload nahi ho payi. Dobara try karein."); }
-                } catch (err) { showError("NETWORK ERROR ❌", "Image upload mein network error aaya."); }
-            }
-        }
-
-        async function updatePassword() {
-            const oldPass = document.getElementById('oldPasswordInput').value.trim(); const newPass = document.getElementById('newPasswordInput').value.trim(); const mobile = localStorage.getItem('currentUserMobile');
-            if(!oldPass || !newPass) return showError("MISSING FIELDS ❌", "Please enter both old and new passwords.");
-            
-            const btn = document.getElementById('updatePassBtn'); btn.innerText = "Updating...";
-            const fileInfo = await fetchGitHubData(USERS_FILE);
-            if (fileInfo.error) { showError("API ERROR ❌", "Unable to connect to server."); btn.innerText = "Update Password"; return; }
-            
-            let dataArray = fileInfo.data || []; const userIndex = dataArray.findIndex(item => String(item.mobile).trim() === String(mobile).trim());
-            
-            if (userIndex !== -1) {
-                if (String(dataArray[userIndex].password).trim() !== oldPass) { showError("WRONG PASSWORD ❌", "Aapka purana password galat hai."); btn.innerText = "Update Password"; return; }
-                dataArray[userIndex].password = newPass; const success = await saveGitHubData(dataArray, USERS_FILE);
-                if(success) { closeProfileModal(); showSuccess("PASSWORD UPDATED ✅", "Aapka naya password successfully update aur generate ho gaya hai! Purana password ab expire ho chuka hai."); } 
-                else { showError("SAVE ERROR ❌", "Server timeout, please try again."); }
-            } else { showError("USER NOT FOUND ❌", "Session expired. Please re-login."); logout(); }
-            btn.innerText = "Update Password";
         }
 
         // ==========================================
-        // 20-MINUTE INACTIVITY & PERSISTENT SESSION
+        // SMART IFRAME LOGIC
         // ==========================================
-        let inactivityTimeout; const INACTIVITY_LIMIT = 20 * 60 * 1000; 
-
-        function startInactivityTimer() { clearTimeout(inactivityTimeout); inactivityTimeout = setTimeout(logoutDueToInactivity, INACTIVITY_LIMIT); }
-        function resetInactivityTimer() { if (localStorage.getItem('isLoggedIn') === 'true') { startInactivityTimer(); } }
-        ['mousemove', 'mousedown', 'keypress', 'touchmove', 'scroll'].forEach(evt => document.addEventListener(evt, resetInactivityTimer));
-        function logoutDueToInactivity() { showError("SESSION EXPIRED ⏳", "Aap 20 minute se inactive the. Security ke liye auto-logout kar diya gaya hai."); logout(); }
-
-        function logout() {
-            localStorage.removeItem('isLoggedIn'); localStorage.removeItem('currentUserMobile'); localStorage.removeItem('currentUserEmail'); localStorage.removeItem('currentUserName'); localStorage.removeItem('currentUserDp');
-            clearTimeout(inactivityTimeout); document.getElementById('dashboardView').style.display = 'none'; document.getElementById('dashboardView').classList.remove('loaded'); document.getElementById('loginView').style.display = 'flex'; document.getElementById('loginForm').reset(); closeToolFrame(); 
-        }
-
         function visitSite(url, name) {
-            if (!url || url === "YOUR_LINK_HERE" || url === "#") return showError("LINK MISSING ❌", "Is tool ka link abhi add nahi hua hai!");
-            if (url.includes('github.io')) { document.getElementById('iframeTitle').innerText = name + ' ⚡'; document.getElementById('toolIframe').src = url; document.getElementById('toolFrameOverlay').style.display = 'flex'; document.body.style.overflow = 'hidden'; } 
-            else { window.open(url, '_blank'); }
+            if (!url || url === "YOUR_LINK_HERE" || url === "#") { 
+                showError("LINK MISSING ❌", "Is tool ka link abhi add nahi hua hai!");
+                return;
+            } 
+            
+            if (url.includes('github.io')) {
+                document.getElementById('iframeTitle').innerText = name + ' ⚡';
+                document.getElementById('toolIframe').src = url;
+                document.getElementById('toolFrameOverlay').style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            } else {
+                window.open(url, '_blank');
+            }
         }
 
-        function closeToolFrame() { document.getElementById('toolFrameOverlay').style.display = 'none'; document.getElementById('toolIframe').src = ''; document.body.style.overflow = 'auto'; }
-
-        window.addEventListener('DOMContentLoaded', () => {
-            updateWelcomeText();
-            if (localStorage.getItem('isLoggedIn') === 'true') { document.getElementById('loginView').style.display = 'none'; document.getElementById('dashboardView').style.display = 'block'; setupProfileData(); loadDashboardData(); startInactivityTimer(); }
-        });
+        function closeToolFrame() {
+            document.getElementById('toolFrameOverlay').style.display = 'none';
+            document.getElementById('toolIframe').src = ''; 
+            document.body.style.overflow = 'auto';
+        }
     </script>
 </body>
 </html>
