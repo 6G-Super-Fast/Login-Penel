@@ -233,5 +233,10 @@
     "name": "IMEI NO TO DETAILS",
     "url": "https://imei.guru/",
     "icon": "https://media.geeksforgeeks.org/wp-content/uploads/20240103155923/How-To-Check-IMEI-Number.png"
+  },
+  {
+    "name": "PASSWORD STRENGTH CHECKER 🔐",
+    "url": "https://6g-super-fast.github.io/Password-checking/",
+    "icon": "https://i.ytimg.com/vi/L_EImuIM7yY/maxresdefault.jpg"
   }
 ]
