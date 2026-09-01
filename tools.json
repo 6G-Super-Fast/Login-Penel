@@ -130,5 +130,13 @@
     "password": "SKS",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "01/09/2026"
+  },
+  {
+    "userName": "Raj",
+    "mobile": "8005054022",
+    "email": "raj12345@gmail.com",
+    "password": "Ram@1234",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "01/09/2026"
   }
 ]
