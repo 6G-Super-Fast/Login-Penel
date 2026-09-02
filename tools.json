@@ -303,5 +303,13 @@
     "password": "Sumit@123",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "02/09/2026"
+  },
+  {
+    "userName": "Sonu",
+    "mobile": "9058471641",
+    "email": "talibtomer@gmail.com",
+    "password": "1122",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "02/09/2026"
   }
 ]
