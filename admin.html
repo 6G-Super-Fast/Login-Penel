@@ -245,6 +245,7 @@
         function renderList() {
             const list = document.getElementById('projectList');
             list.innerHTML = "";
+            let sNo = 1;
             toolsArray.forEach((tool, index) => {
                 if(!tool.name) return; 
 
@@ -261,7 +262,7 @@
                             <span class="drag-icon"><i class="fa-solid fa-grip-vertical"></i></span>
                             ${iconPreview}
                             <span style="font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;">
-                                ${index + 1}. ${tool.name.replace(' ⚡', '')}
+                                ${sNo++}. ${tool.name.replace(' ⚡', '')}
                             </span>
                         </div>
                         <div class="action-btns">
