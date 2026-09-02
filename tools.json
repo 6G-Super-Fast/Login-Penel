@@ -343,5 +343,10 @@
     "password": "Rajeev123@",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "02/09/2026"
+  },
+  {
+    "name": "Mouse-Keypad Tester 🔍",
+    "url": "https://6g-super-fast.github.io/Mouse-Keyboard-Test/",
+    "icon": "https://vhdcombo.com/theme/images/page/keyboardMouseTester.webp"
   }
 ]
