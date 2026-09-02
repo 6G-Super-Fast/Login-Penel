@@ -168,6 +168,10 @@
         <button class="btn-pro btn-blue" onclick="saveToGitHub()">
             <i class="fa-solid fa-cloud-arrow-up"></i> UPLOAD TO GITHUB
         </button>
+        
+        <button class="btn-pro" style="background: #da3633; color: #fff; margin-top: 15px;" onclick="logoutAdmin()">
+            <i class="fa-solid fa-right-from-bracket"></i> LOGOUT
+        </button>
     </div>
 
     <div id="listModal" class="modal">
@@ -217,6 +221,43 @@
         let editIndex = null; 
         let dragStartIndex = null; 
 
+        // Check login state on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('isAdminLoggedIn') === 'true') {
+                toolsArray = JSON.parse(localStorage.getItem('cachedToolsArray') || '[]');
+                fileSha = localStorage.getItem('cachedFileSha') || '';
+                
+                document.getElementById('loginSection').style.display = 'none';
+                document.getElementById('editorSection').style.display = 'block';
+                
+                // Background update check if data exists
+                if(toolsArray.length === 0) {
+                    loadDataSilent();
+                } else {
+                    renderList();
+                }
+            }
+        });
+
+        async function loadDataSilent() {
+            try {
+                const response = await fetch(`https://api.github.com/repos/${myRepo}/contents/tools.json`, {
+                    headers: { 'Authorization': `token ${GIT_TOKEN}` }
+                });
+                if(response.ok) {
+                    const data = await response.json();
+                    fileSha = data.sha;
+                    const decodedData = decodeURIComponent(escape(atob(data.content)));
+                    toolsArray = JSON.parse(decodedData);
+                    localStorage.setItem('cachedFileSha', fileSha);
+                    localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
+                    renderList();
+                }
+            } catch (error) {
+                console.log("Background sync failed");
+            }
+        }
+
         async function loadData() {
             const loginBtn = document.querySelector('#loginSection .btn-green');
             loginBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> LOADING DATA...";
@@ -233,6 +274,11 @@
                 const decodedData = decodeURIComponent(escape(atob(data.content)));
                 toolsArray = JSON.parse(decodedData);
                 
+                // Save session state to localStorage
+                localStorage.setItem('isAdminLoggedIn', 'true');
+                localStorage.setItem('cachedFileSha', fileSha);
+                localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
+                
                 document.getElementById('loginSection').style.display = 'none';
                 document.getElementById('editorSection').style.display = 'block';
                 renderList();
@@ -240,6 +286,15 @@
                 alert("Error! Token check karo ya internet connection dekho.");
                 loginBtn.innerHTML = "<i class='fa-solid fa-right-to-bracket'></i> ENTER ADMIN PANEL";
             }
+        }
+
+        function logoutAdmin() {
+            localStorage.removeItem('isAdminLoggedIn');
+            localStorage.removeItem('cachedFileSha');
+            localStorage.removeItem('cachedToolsArray');
+            document.getElementById('editorSection').style.display = 'none';
+            document.getElementById('loginSection').style.display = 'block';
+            document.querySelector('#loginSection .btn-green').innerHTML = "<i class='fa-solid fa-right-to-bracket'></i> ENTER ADMIN PANEL";
         }
 
         function renderList() {
@@ -289,6 +344,7 @@
         function swapItems(fromIndex, toIndex) {
             const itemToMove = toolsArray.splice(fromIndex, 1)[0];
             toolsArray.splice(toIndex, 0, itemToMove);
+            localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
             renderList(); 
         }
 
@@ -312,6 +368,7 @@
             document.getElementById('pName').value = "";
             document.getElementById('pLink').value = "";
             document.getElementById('pIcon').value = "";
+            localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
             renderList();
             closeModal(); 
         }
@@ -338,6 +395,7 @@
                     document.getElementById('actionBtn').innerHTML = "<i class='fa-solid fa-plus'></i> ADD TO LIST";
                     document.getElementById('actionBtn').className = "btn-pro btn-green";
                 }
+                localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
                 renderList();
             }
         }
@@ -347,7 +405,6 @@
             const encodedContent = btoa(unescape(encodeURIComponent(updatedJson)));
             const uploadBtn = document.querySelector('.btn-blue');
             
-            // 🟢 BUTTON ANIMATION & SPINNER (NO POPUP)
             uploadBtn.innerHTML = "<i class='fa-solid fa-spinner fa-spin'></i> SAVING TO GITHUB...";
             uploadBtn.style.background = "#d29922";
 
@@ -361,8 +418,8 @@
                 if(response.ok) {
                     const data = await response.json();
                     fileSha = data.content.sha;
+                    localStorage.setItem('cachedFileSha', fileSha);
                     
-                    // 🟢 SUCCESS BUTTON STATE
                     uploadBtn.innerHTML = "<i class='fa-solid fa-circle-check'></i> UPLOAD DONE ✅";
                     uploadBtn.style.background = "#00ea77";
                     uploadBtn.style.color = "#000";
