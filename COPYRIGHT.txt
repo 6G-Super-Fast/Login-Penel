@@ -1,0 +1,9 @@
+Copyright (C) 2026 Salman. All rights reserved.
+
+The copyright notice above applies to all original files within this repository, specifically including but not limited to:
+- index.html
+- admin.html
+- tools.json
+- All associated scripts, stylesheets, and JSON data.
+
+This entire project is proprietary and confidential. Unauthorized copying, modification, distribution, cloning, or use of any file in this repository, via any medium, is strictly prohibited.
