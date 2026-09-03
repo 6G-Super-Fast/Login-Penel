@@ -563,5 +563,13 @@
     "password": "12345",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "03/09/2026"
+  },
+  {
+    "userName": "Rohan",
+    "mobile": "9793500036",
+    "email": "rohan125@gmail.com",
+    "password": "V123456k",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "03/09/2026"
   }
 ]
