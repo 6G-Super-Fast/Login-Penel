@@ -561,7 +561,7 @@
                     document.getElementById('modalProfileName').innerText = newName;
                     showSuccess("SUCCESS ✅", "Aapka naam successfully update ho gaya!");
                 } else {
-                    showError("SAVE ERROR ❌", "GitHub par save nahi hua.");
+                    showError("SAVE ERROR ❌", "API Error! Try After Some Times.");
                 }
             }
             btn.innerText = "Update Name";
@@ -747,7 +747,7 @@
 
             const fileInfo = await fetchGitHubData();
             if (fileInfo.error) {
-                showError("API ERROR ❌", "GitHub API Error! Apna Token Check Karo.");
+                showError("API ERROR ❌", "API Error! Try After Some Times.");
                 btn.innerText = "Register";
                 return;
             }
@@ -768,7 +768,7 @@
                 updateWelcomeText(); 
                 showSuccess("REGISTER DONE ✅", "Your account has been created successfully.");
             } else {
-                showError("SAVE ERROR ❌", "Error: Data GitHub par save nahi hua!");
+                showError("SAVE ERROR ❌", "API Error! Try After Some Times.");
             }
             btn.innerText = "Register";
         });
@@ -783,7 +783,7 @@
 
             const fileInfo = await fetchGitHubData();
             if (fileInfo.error) {
-                showError("API ERROR ❌", "GitHub API Error! Apna Token Check Karo.");
+                showError("API ERROR ❌", "API Error! Try After Some Times.");
                 btn.innerText = "Login";
                 return;
             }
