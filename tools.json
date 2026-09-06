@@ -706,5 +706,13 @@
     "password": "Abhi@9792",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "06/09/2026"
+  },
+  {
+    "userName": "Fet",
+    "mobile": "1234567890",
+    "email": "demo@gmail.com",
+    "password": "1234567890",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "06/09/2026"
   }
 ]
