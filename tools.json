@@ -802,5 +802,13 @@
     "password": "Abhay@123",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "06/09/2026"
+  },
+  {
+    "userName": "Roshan kumar",
+    "mobile": "8862848670",
+    "email": "roshankumar8862@gmail.com",
+    "password": "Roshan@1234",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "06/09/2026"
   }
 ]
