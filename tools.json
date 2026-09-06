@@ -714,5 +714,13 @@
     "password": "1234567890",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "06/09/2026"
+  },
+  {
+    "userName": "Raj",
+    "mobile": "8005054023",
+    "email": "raj800@gmail.com",
+    "password": "Ram@1234",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "06/09/2026"
   }
 ]
