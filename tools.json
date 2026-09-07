@@ -855,5 +855,10 @@
     "password": "123",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "07/09/2026"
+  },
+  {
+    "name": "Fraud Alert",
+    "url": "https://6g-super-fast.github.io/Scammer-Person/",
+    "icon": "https://static.vecteezy.com/system/resources/thumbnails/077/064/304/small_2x/red-scam-alert-warning-icon-with-horizontal-text-layout-ideal-for-modern-ui-alerts-fraud-warnings-and-security-notifications-free-video.jpg"
   }
 ]
