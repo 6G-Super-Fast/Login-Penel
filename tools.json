@@ -847,5 +847,13 @@
     "name": "UPPCL ELECTRIC BILL FATCH",
     "url": "https://consumer.uppcl.org/wss/pay_bill_home",
     "icon": "https://tse3.mm.bing.net/th/id/OIP.vF6IjUvsBtE4cGEMWh6NFAAAAA?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+  },
+  {
+    "userName": "SSK",
+    "mobile": "9068924033",
+    "email": "duniya.sabjanti@gmail.com",
+    "password": "123",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "07/09/2026"
   }
 ]
