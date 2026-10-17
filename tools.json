@@ -1036,5 +1036,13 @@
     "password": "@rohit123",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "07/10/2026"
+  },
+  {
+    "userName": "Rajpal",
+    "mobile": "5689234527",
+    "email": "rajpalA@gmail.com",
+    "password": "RajpalQ",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "17/10/2026"
   }
 ]
