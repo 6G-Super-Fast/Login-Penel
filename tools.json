@@ -1060,5 +1060,10 @@
     "password": "123456",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "25/10/2026"
+  },
+  {
+    "name": "CHECK MASK PAN NUMBER BY AADHAAR",
+    "url": "https://6g-super-fast.github.io/Masked-Pan-Check/",
+    "icon": "https://jnanabhumiap.in/wp-content/uploads/link-pan-with-aadhaar.png"
   }
 ]
