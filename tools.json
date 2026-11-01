@@ -14,37 +14,44 @@
   {
     "name": "PAN TO GST NO FINDER",
     "url": "https://6g-super-fast.github.io/PAN-TO-GST/",
-    "icon": "https://5.imimg.com/data5/SELLER/Default/2024/10/458052978/SL/PD/SC/18818186/iso-certification-services-1000x1000.jpeg"
+    "icon": "https://5.imimg.com/data5/SELLER/Default/2024/10/458052978/SL/PD/SC/18818186/iso-certification-services-1000x1000.jpeg",
+    "hidden": true
   },
   {
     "name": "UID TO MASK PAN CHECK",
     "url": "https://6g-super-fast.github.io/AADHAR-TO-MASK-PAN/",
-    "icon": "https://jnanabhumiap.in/wp-content/uploads/link-pan-with-aadhaar.png"
+    "icon": "https://jnanabhumiap.in/wp-content/uploads/link-pan-with-aadhaar.png",
+    "hidden": false
   },
   {
     "name": "PAN TO MASK UID CHECK",
     "url": "https://6g-super-fast.github.io/PAN-TO-UID-MASKED/",
-    "icon": "https://cdn.thelivemirror.com/wp-content/uploads/2021/07/02.jpg"
+    "icon": "https://cdn.thelivemirror.com/wp-content/uploads/2021/07/02.jpg",
+    "hidden": false
   },
   {
     "name": "PAN TO DETAILS",
     "url": "https://6g-super-fast.github.io/PAN-TO-DETAILS/",
-    "icon": "https://tse4.mm.bing.net/th/id/OIP.JetTwXq75w7SU9PrH4UbMAHaEj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+    "icon": "https://tse4.mm.bing.net/th/id/OIP.JetTwXq75w7SU9PrH4UbMAHaEj?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "hidden": true
   },
   {
     "name": "AADHAR TO RATION DETAILS",
     "url": "https://6g-super-fast.github.io/family-details/",
-    "icon": "https://tse1.mm.bing.net/th/id/OIP.ylOKOo00sM7F842o8OupdQHaD1?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+    "icon": "https://tse1.mm.bing.net/th/id/OIP.ylOKOo00sM7F842o8OupdQHaD1?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+    "hidden": true
   },
   {
     "name": "AADHAR CARD DETAILS",
     "url": "https://6g-super-fast.github.io/AADHAR-TO-DETAILS/",
-    "icon": "https://assets.thehansindia.com/h-upload/2024/09/19/1481733-aadhaar.jpg"
+    "icon": "https://assets.thehansindia.com/h-upload/2024/09/19/1481733-aadhaar.jpg",
+    "hidden": true
   },
   {
     "name": "SIM CARD DETAILS",
     "url": "https://6g-super-fast.github.io/MOBILE-TO-DETAILS/",
-    "icon": "https://www.mobilenumbertrackeronline.com/wp-content/uploads/2024/05/Find-Details-Of-Mobile-Number.jpg"
+    "icon": "https://www.mobilenumbertrackeronline.com/wp-content/uploads/2024/05/Find-Details-Of-Mobile-Number.jpg",
+    "hidden": true
   },
   {
     "name": "UPI ID VALIDATOR 🔍",
