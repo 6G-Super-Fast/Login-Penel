@@ -2,7 +2,8 @@
   {
     "name": "VEHICLE RC DETAILS",
     "url": "https://6g-super-fast.github.io/VEHICLE-RC-INFO/",
-    "icon": "https://smcinsurance.com/SocialImages/ArticleImages/december-2023/vehicle-owner-details-by-number-plate.jpg"
+    "icon": "https://smcinsurance.com/SocialImages/ArticleImages/december-2023/vehicle-owner-details-by-number-plate.jpg",
+    "hidden": true
   },
   {
     "name": "VOTER ID DETAILS",
