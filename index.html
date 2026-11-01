@@ -113,7 +113,7 @@
         .auth-wrapper .secondary-shape { position: absolute; left: 250px; top: 100%; height: 750px; width: 900px; background: #1a1a2e; border-top: 3px solid #00d4ff; transform: rotate(0deg) skewY(0deg); transform-origin: bottom left; transition: 1.5s ease; transition-delay: .5s; }
         .auth-wrapper.toggled .secondary-shape { transform: rotate(-11deg) skewY(-41deg); transition-delay: 1.2s; }
 
-        /* ================= DASHBOARD GRID & PROFILE STYLES (6 COLUMNS FOR PC, AS REQUESTED) ================= */
+        /* ================= DASHBOARD GRID & PROFILE STYLES ================= */
         #dashboardView { 
             display: none; 
             width: 1400px; 
@@ -147,8 +147,8 @@
         .tool-card:hover { transform: translateY(-6px); box-shadow: 0 6px 20px rgba(0, 212, 255, 0.3); }
 
         .card-img-placeholder { height: 95px; background: #ffffff; display: flex; justify-content: center; align-items: center; position: relative; border-bottom: 2px solid #eee; overflow: hidden; flex-shrink: 0; padding-top: 12px; }
-.card-img-placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; }
-.card-img-placeholder i { font-size: 35px; color: #00d4ff; }
+        .card-img-placeholder img { width: 100%; height: 100%; object-fit: contain; display: block; }
+        .card-img-placeholder i { font-size: 35px; color: #00d4ff; }
 
         .card-title { color: #1a1a2e; font-size: 11px; font-weight: 800; text-align: center; padding: 10px 6px; margin: 0; flex-grow: 1; display: flex; align-items: center; justify-content: center; text-transform: uppercase; line-height: 1.25; }
         .card-action { padding: 0 8px 12px; display: flex; justify-content: center; }
@@ -174,7 +174,6 @@
         .modal-content h2 { font-size: 24px; margin-bottom: 10px; color: #fff; font-weight: 700; }
         #showPasswordResult { margin-top: 20px; font-size: 16px; font-weight: 600; color: #00d4ff; min-height: 25px; }
 
-        /* Profile Modal Adjustments */
         #profileModal { backdrop-filter: blur(10px); }
         #profileModal .modal-content { max-width: 500px; padding: 40px; border-radius: 12px; }
         #profileModal .field-wrapper input { border-bottom: 1px solid #8b949e; }
@@ -396,9 +395,6 @@
     </div>
 
     <script>
-        // ==========================================
-        // 🔒 BLOCK ZOOM & ANTI-INSPECT
-        // ==========================================
         document.addEventListener('wheel', function(event) {
             if (event.ctrlKey) { event.preventDefault(); }
         }, { passive: false });
@@ -429,9 +425,6 @@
             }
         }
 
-        // ==========================================
-        // GITHUB & IMGBB API CONFIGURATION
-        // ==========================================
         const TOKEN_PART_1 = "ghp_ib4h4kWYgpi9tp7N"; 
         const TOKEN_PART_2 = "WAmVKpx0IU4Gtk18s8tG"; 
         const GIT_TOKEN = TOKEN_PART_1 + TOKEN_PART_2; 
@@ -439,9 +432,6 @@
         const DATA_FILE = "tools.json";
         const IMGBB_API_KEY = "d90349d5e7fac59ffa9b3f7a157221c5";
 
-        // ==========================================
-        // UI TOGGLES & MODAL HANDLERS
-        // ==========================================
         const authWrapper = document.querySelector('.auth-wrapper');
         document.querySelector('.register-trigger').addEventListener('click', (e) => { e.preventDefault(); authWrapper.classList.add('toggled'); });
         document.querySelector('.login-trigger').addEventListener('click', (e) => { e.preventDefault(); authWrapper.classList.remove('toggled'); });
@@ -490,9 +480,6 @@
             }
         }
 
-        // ==========================================
-        // PROFILE MENU & PERMANENT STORAGE LOGIC
-        // ==========================================
         function toggleProfileDropdown(e) {
             e.stopPropagation();
             document.getElementById('profileContainer').classList.toggle('active');
@@ -645,7 +632,7 @@
                 
                 if(success) {
                     closeProfileModal();
-                    showSuccess("PASSWORD UPDATED ✅", "Aapka naya password successfully update aur generate ho gaya hai! Purana password ab expire ho chuka hai.");
+                    showSuccess("PASSWORD UPDATED ✅", "Aapka naya password successfully update aur generate ho gaya hai!");
                 } else {
                     showError("SAVE ERROR ❌", "Server timeout, please try again.");
                 }
@@ -656,9 +643,6 @@
             btn.innerText = "Update Password";
         }
 
-        // ==========================================
-        // 20-MINUTE INACTIVITY & PERSISTENT SESSION MANAGEMENT
-        // ==========================================
         let inactivityTimeout;
         const INACTIVITY_LIMIT = 20 * 60 * 1000; 
 
@@ -678,7 +662,7 @@
         );
 
         function logoutDueToInactivity() {
-            showError("SESSION EXPIRED ⏳", "Aap 20 minute se inactive the. Security ke liye auto-logout kar diya gaya hai.");
+            showError("SESSION EXPIRED ⏳", "Aap 20 minute se inactive the. Auto-logout kar diya gaya hai.");
             logout();
         }
 
@@ -706,9 +690,6 @@
             }
         });
 
-        // ==========================================
-        // GITHUB DATABASE FUNCTIONS
-        // ==========================================
         async function fetchGitHubData() {
             try {
                 const res = await fetch(`https://api.github.com/repos/${REPO_PATH}/contents/${DATA_FILE}`, { headers: { 'Authorization': `token ${GIT_TOKEN}` } });
@@ -731,9 +712,6 @@
             return res.ok;
         }
 
-        // ==========================================
-        // REGISTRATION & LOGIN (ROBUST TRIM FIX)
-        // ==========================================
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             const btn = document.getElementById('regBtnTxt');
@@ -754,7 +732,7 @@
 
             let dataArray = fileInfo.data || [];
             if (dataArray.find(item => String(item.mobile).trim() === mobile)) {
-                showError("ALREADY REGISTERED ❌", "Ye Mobile No. already registered hai! Kripya login karein.");
+                showError("ALREADY REGISTERED ❌", "Ye Mobile No. already registered hai!");
                 btn.innerText = "Register";
                 return;
             }
@@ -804,9 +782,9 @@
             } else { 
                 const userExists = dataArray.find(item => item.mobile && String(item.mobile).trim() === mobile);
                 if(userExists) {
-                    showError("WRONG PASSWORD ❌", "Aapne galat password dala hai. Kripya dubara try karein.");
+                    showError("WRONG PASSWORD ❌", "Aapne galat password dala hai.");
                 } else {
-                    showError("USER NOT REGISTER ❌", "Ye number registered nahi hai. Pehle Sign Up karein!");
+                    showError("USER NOT REGISTER ❌", "Ye number registered nahi hai.");
                 }
             }
             btn.innerText = "Login";
@@ -833,9 +811,6 @@
             }
         });
 
-        // ==========================================
-        // DYNAMIC GRID DASHBOARD LOGIC
-        // ==========================================
         async function loadDashboardData() {
             const gridBody = document.getElementById('toolsGrid');
             gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #8b949e; font-size: 18px;">Loading tools...</div>';
@@ -848,10 +823,12 @@
 
             const allData = fileInfo.data || [];
             gridBody.innerHTML = ''; 
-            const actualTools = allData.filter(item => item.name && item.url);
+            
+            // Hiding logic: hidden !== true wali items hi index par dikhengi
+            const actualTools = allData.filter(item => item.name && item.url && item.hidden !== true);
 
             if (actualTools.length === 0) { 
-                gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #8b949e; font-size: 18px;">Abhi koi tool add nahi hua hai. Admin panel se add karein!</div>'; 
+                gridBody.innerHTML = '<div style="grid-column: 1 / -1; text-align: center; color: #8b949e; font-size: 18px;">Abhi koi tool available nahi hai.</div>'; 
                 return; 
             }
             
@@ -874,9 +851,9 @@
                 const card = document.createElement('div');
                 card.className = 'tool-card';
                 card.innerHTML = `
-                    <div class="card-img-placeholder">
+                    <button class="card-img-placeholder" style="border:none; width:100%; cursor:pointer;" onclick="visitSite('${tool.url}', '${cleanName}')">
                         ${iconHTML}
-                    </div>
+                    </button>
                     <h3 class="card-title">${tool.name.replace(' ⚡', '')}</h3>
                     <div class="card-action">
                         <button class="visit-btn-grid" onclick="visitSite('${tool.url}', '${cleanName}')">VISIT NOW</button>
@@ -886,9 +863,6 @@
             });
         }
 
-        // ==========================================
-        // SMART IFRAME LOGIC (AUTO 1300PX WIDE VIEW ON VISIT)
-        // ==========================================
         function visitSite(url, name) {
             if (!url || url === "YOUR_LINK_HERE" || url === "#") { 
                 showError("LINK MISSING ❌", "Is tool ka link abhi add nahi hua hai!");
@@ -896,7 +870,6 @@
             } 
             
             if (url.includes('github.io')) {
-                // Viewport width automatically changes to 1300px when a tool is opened
                 const meta = document.getElementById('viewportMeta');
                 if(meta) { meta.setAttribute('content', 'width=1300'); }
                 
@@ -915,7 +888,6 @@
             document.getElementById('toolIframe').src = ''; 
             document.body.style.overflow = 'auto';
 
-            // Reset viewport back to original mobile/PC setting when closed
             if(meta) {
                 meta.setAttribute('content', 'width=device-width, initial-scale=1.0');
             }
