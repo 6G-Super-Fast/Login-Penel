@@ -8,7 +8,8 @@
   {
     "name": "VOTER ID DETAILS",
     "url": "https://6g-super-fast.github.io/VOTER-DETAILS/",
-    "icon": "https://i.ytimg.com/vi/E_34Y6JNOWI/maxresdefault.jpg"
+    "icon": "https://i.ytimg.com/vi/E_34Y6JNOWI/maxresdefault.jpg",
+    "hidden": true
   },
   {
     "name": "PAN TO GST NO FINDER",
