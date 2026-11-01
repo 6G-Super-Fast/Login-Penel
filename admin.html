@@ -86,10 +86,16 @@
             padding: 8px 12px; border: none; border-radius: 6px; cursor: pointer;
             font-weight: 600; font-size: 12px; transition: 0.3s; color: #fff;
         }
-        .btn-edit { background: #9e6a03; margin-right: 8px; }
+        .btn-hide { background: #6e7681; margin-right: 6px; }
+        .btn-hide:hover { background: #8b949e; }
+        .btn-unhide { background: #238636; margin-right: 6px; }
+        .btn-unhide:hover { background: #2ea043; }
+        .btn-edit { background: #9e6a03; margin-right: 6px; }
         .btn-edit:hover { background: #d29922; }
         .btn-delete { background: #da3633; }
         .btn-delete:hover { background: #f85149; }
+        
+        .hidden-badge { background: #da3633; color: #fff; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 8px; font-weight: 600; }
 
         .list-item { 
             display: flex; justify-content: space-between; align-items: center; 
@@ -221,7 +227,6 @@
         let editIndex = null; 
         let dragStartIndex = null; 
 
-        // Check login state on page load
         window.addEventListener('DOMContentLoaded', () => {
             if (localStorage.getItem('isAdminLoggedIn') === 'true') {
                 toolsArray = JSON.parse(localStorage.getItem('cachedToolsArray') || '[]');
@@ -230,7 +235,6 @@
                 document.getElementById('loginSection').style.display = 'none';
                 document.getElementById('editorSection').style.display = 'block';
                 
-                // Background update check if data exists
                 if(toolsArray.length === 0) {
                     loadDataSilent();
                 } else {
@@ -274,7 +278,6 @@
                 const decodedData = decodeURIComponent(escape(atob(data.content)));
                 toolsArray = JSON.parse(decodedData);
                 
-                // Save session state to localStorage
                 localStorage.setItem('isAdminLoggedIn', 'true');
                 localStorage.setItem('cachedFileSha', fileSha);
                 localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
@@ -311,22 +314,35 @@
                     iconPreview = `<span style="font-size: 22px; margin-right: 15px; color:#00ea77;"><i class="fa-solid fa-bolt"></i></span>`;
                 }
 
+                const isHidden = tool.hidden === true;
+                const hiddenBadge = isHidden ? `<span class="hidden-badge">HIDDEN</span>` : '';
+                const hideBtnText = isHidden ? `<i class="fa-solid fa-eye"></i>` : `<i class="fa-solid fa-eye-slash"></i>`;
+                const hideBtnClass = isHidden ? `btn-unhide` : `btn-hide`;
+                const hideTitle = isHidden ? "Unhide Tool" : "Hide Tool";
+
                 list.innerHTML += `
-                    <div class="list-item" draggable="true" data-index="${index}">
+                    <div class="list-item" draggable="true" data-index="${index}" style="${isHidden ? 'opacity: 0.65;' : ''}">
                         <div style="display: flex; align-items: center; flex: 1; padding-right: 15px;">
                             <span class="drag-icon"><i class="fa-solid fa-grip-vertical"></i></span>
                             ${iconPreview}
                             <span style="font-size: 15px; font-weight: 600; font-family: 'Inter', sans-serif;">
-                                ${sNo++}. ${tool.name.replace(' ⚡', '')}
+                                ${sNo++}. ${tool.name.replace(' ⚡', '')} ${hiddenBadge}
                             </span>
                         </div>
                         <div class="action-btns">
+                            <button class="${hideBtnClass}" onclick="toggleHide(${index})" title="${hideTitle}">${hideBtnText}</button>
                             <button class="btn-edit" onclick="editTool(${index})"><i class="fa-solid fa-pen"></i></button>
                             <button class="btn-delete" onclick="deleteTool(${index})"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>`;
             });
             addDragAndDropListeners();
+        }
+
+        function toggleHide(index) {
+            toolsArray[index].hidden = !toolsArray[index].hidden;
+            localStorage.setItem('cachedToolsArray', JSON.stringify(toolsArray));
+            renderList();
         }
 
         function addDragAndDropListeners() {
@@ -356,9 +372,10 @@
             if(!name || !link) { return alert("Tool ka Naam aur Link dono daalna zaroori hai!"); }
 
             if(editIndex === null) {
-                toolsArray.push({name, url: link, icon});
+                toolsArray.push({name, url: link, icon, hidden: false});
             } else {
-                toolsArray[editIndex] = {name, url: link, icon};
+                const currentHidden = toolsArray[editIndex].hidden || false;
+                toolsArray[editIndex] = {name, url: link, icon, hidden: currentHidden};
                 editIndex = null;
                 document.getElementById('formTitle').innerHTML = "<i class='fa-solid fa-fire'></i> Add New Site";
                 document.getElementById('actionBtn').innerHTML = "<i class='fa-solid fa-plus'></i> ADD TO LIST";
