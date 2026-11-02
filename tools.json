@@ -1170,5 +1170,13 @@
     "password": "Kumar@123",
     "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
     "date": "01/11/2026"
+  },
+  {
+    "userName": "Aman",
+    "mobile": "8273133969",
+    "email": "amani282@gmail.com",
+    "password": "12345678",
+    "dpUrl": "https://cdn-icons-png.flaticon.com/512/3135/3135715.png",
+    "date": "03/11/2026"
   }
 ]
